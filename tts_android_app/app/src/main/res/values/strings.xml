@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">TTS Field Sales</string>
+    <string name="login_title">TTS Field Sales</string>
+    <string name="login_subtitle">Login to your account</string>
+    <string name="url_label">Odoo URL</string>
+    <string name="username_label">Username</string>
+    <string name="password_label">Password</string>
+    <string name="sign_in">Sign In</string>
+    <string name="printer_settings">Printer Settings</string>
+    <string name="select_printer">Select Bluetooth Printer</string>
+    <string name="printer_type">Printer Width</string>
+    <string name="width_3inch">3-inch (80mm)</string>
+    <string name="width_4inch">4-inch (104mm)</string>
+</resources>
