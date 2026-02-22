@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="20dp"
+    android:gravity="center_horizontal">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Printing Receipt"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="20dp"/>
+
+    <TextView
+        android:id="@+id/statusText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Preparing HTML..."
+        android:textSize="16sp"
+        android:layout_marginBottom="20dp"/>
+
+    <ProgressBar
+        android:id="@+id/printProgressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"/>
+
+    <!-- The Hidden WebView used to render HTML -> Bitmap -->
+    <!-- We give it exactly 384px width to simulate a 58mm printer with 203 DPI -->
+    <WebView
+        android:id="@+id/offscreenWebView"
+        android:layout_width="384px"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        android:layout_marginBottom="20dp" />
+
+    <LinearLayout
+        android:id="@+id/devicesLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Select Paired Printer:"
+            android:textStyle="bold"
+            android:layout_marginBottom="10dp"/>
+
+        <ListView
+            android:id="@+id/devicesListView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/cancelBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Cancel / Close"
+        android:layout_marginTop="20dp"/>
+
+</LinearLayout>
