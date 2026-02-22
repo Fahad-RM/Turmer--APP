@@ -1,4 +1,4 @@
-name: Android APK Build (GitHub Only)
+name: Android APK Build (Auto Detect)
 
 on:
   workflow_dispatch:
@@ -35,11 +35,20 @@ jobs:
           unzip -q gradle-8.2-bin.zip
           echo "$PWD/gradle-8.2/bin" >> $GITHUB_PATH
 
-      - name: Build Debug APK
-        run: cd Turmer--APP && gradle assembleDebug
+      - name: Locate Gradle Project and Build
+        run: |
+          PROJECT_DIR=$(find . -name "settings.gradle" -exec dirname {} \; | head -n 1)
+          echo "Project directory found at: $PROJECT_DIR"
+          cd "$PROJECT_DIR"
+          gradle assembleDebug
+
+      - name: Locate APK
+        run: |
+          APK_PATH=$(find . -name "app-debug.apk" | head -n 1)
+          echo "APK_PATH=$APK_PATH" >> $GITHUB_ENV
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
           name: app-debug-apk
-          path: Turmer--APP/app/build/outputs/apk/debug/app-debug.apk
+          path: ${{ env.APK_PATH }}
