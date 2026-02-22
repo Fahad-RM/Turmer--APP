@@ -36,10 +36,10 @@ jobs:
           echo "$PWD/gradle-8.2/bin" >> $GITHUB_PATH
 
       - name: Build Debug APK
-        run: gradle assembleDebug
+        run: cd Turmer--APP && gradle assembleDebug
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
           name: app-debug-apk
-          path: app/build/outputs/apk/debug/app-debug.apk
+          path: Turmer--APP/app/build/outputs/apk/debug/app-debug.apk
